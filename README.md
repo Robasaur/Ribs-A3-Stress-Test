@@ -4,14 +4,14 @@ Let it run for 15–30 minutes and watch your FPS drop!
 - If fps drops over time without counts rising, that often screams fragmentation / runaway scheduled scripts / handler buildup.
 ---
 player init (double click the unit, paste this in the init for HUD):
+```
 [] execVM "leak_ui_init.sqf";
-
 [] spawn {
   uiSleep 2;
   [] call LH_fnc_hudStart;
 };
-
 this addAction ["Open Leak Harness Control", { [] call LH_fnc_openUI; }];
+```
 ---
 description of what each file does
 - serverInit.sqf - Runs the serversided scripts - ensure you run your mission in multiplayer - should work in single, but may need to launch UI from debug console?
@@ -28,4 +28,6 @@ files structure (root of mission folder)
 ---
 Use this in the debug or call stop in the HUD
 kill command:
+```
 missionNamespace setVariable ["LEAKTEST_KILL", true, true];
+```
